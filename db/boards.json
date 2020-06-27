@@ -1,0 +1,25 @@
+{
+  "board1": {
+    "category": "House Ideas"
+  },
+
+  "board2": {
+    "category": "Panda Bears"
+  },
+  
+  "board3": {
+    "category": "Recipes"
+  },
+
+  "board4": {
+    "category": "Workouts"
+  },
+
+  "board5": {
+    "category": "Nerdy Things"
+  },
+
+  "board6": {
+    "category": "Travel"
+  }
+}
