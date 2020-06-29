@@ -1,6 +1,7 @@
 import boardData from '../../helpers/data/boardData';
 import boardMaker from '../boardMaker/boardMaker';
 import utils from '../../helpers/utils';
+import pinList from '../pinList/pinList';
 
 const buildBoards = () => {
   boardData.getBoards()
@@ -16,6 +17,8 @@ const buildBoards = () => {
       domString += '</div>';
 
       utils.printToDom('#boards', domString);
+
+      $('body').on('click', '.boardCard', pinList.showPins);
     })
     .catch((err) => console.error('it broke', err));
 };

@@ -7,7 +7,6 @@ const getBoards = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/boards.json`)
     .then((response) => {
       const boardObjects = response.data;
-      console.warn(response.data);
       const boards = [];
       if (boardObjects) {
         Object.keys(boardObjects).forEach((boardId) => {
