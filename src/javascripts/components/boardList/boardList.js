@@ -18,7 +18,7 @@ const buildBoards = () => {
 
       utils.printToDom('#boards', domString);
 
-      $('body').on('click', '#boardButton', pinList.showPins);
+      $('body').on('click', '.boardCard', pinList.showPins);
     })
     .catch((err) => console.error('it broke', err));
 };

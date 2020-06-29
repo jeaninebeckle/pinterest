@@ -7,7 +7,6 @@ const getPinsByBoardId = (boardId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/pins.json?orderBy="boardId"&equalTo="${boardId}"`)
     .then((response) => {
       const pinObjects = response.data;
-      console.warn(baseUrl);
       console.warn(response.data);
       const pins = [];
       Object.keys(pinObjects).forEach((boardPinId) => {

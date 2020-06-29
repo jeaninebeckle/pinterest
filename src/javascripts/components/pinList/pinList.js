@@ -2,11 +2,12 @@ import pinData from '../../helpers/data/pinData';
 import pinMaker from '../pinMaker/pinMaker';
 import utils from '../../helpers/utils';
 
-const showPins = () => {
-  // const pinId = e.target.closest('card').id;
-  pinData.getPinsByBoardId()
+const showPins = (e) => {
+  const boardId = e.target.closest('.card').id;
+  console.warn(boardId);
+  pinData.getPinsByBoardId(boardId)
     .then((pins) => {
-      console.warn('Get pins worked', pins);
+      console.warn('Get pins worked');
       let domString = `
       <div class="card">
       `;
