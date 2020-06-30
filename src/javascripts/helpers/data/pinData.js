@@ -7,7 +7,6 @@ const getPinsByBoardId = (boardId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/pins.json?orderBy="boardId"&equalTo="${boardId}"`)
     .then((response) => {
       const pinObjects = response.data;
-      console.warn(response.data);
       const pins = [];
       Object.keys(pinObjects).forEach((boardPinId) => {
         pinObjects[boardPinId].id = boardPinId;
@@ -18,4 +17,6 @@ const getPinsByBoardId = (boardId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getPinsByBoardId };
+const deletePin = (pinId) => axios.delete(`${baseUrl}/pins/${pinId}.json`);
+
+export default { getPinsByBoardId, deletePin };
