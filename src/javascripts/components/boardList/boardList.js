@@ -3,6 +3,18 @@ import boardMaker from '../boardMaker/boardMaker';
 import utils from '../../helpers/utils';
 import pinList from '../pinList/pinList';
 
+const removeBoardEvent = (e) => {
+  console.warn(e.target.closest('.card').id);
+  const boardId = e.target.closest('.card').id;
+  boardData.deleteBoard(boardId)
+    .then((response) => {
+      console.warn(response);
+
+      buildBoards(); //eslint-disable-line
+    })
+    .catch((err) => console.error('could not delete board', err));
+};
+
 const buildBoards = () => {
   boardData.getBoards()
     .then((boards) => {
@@ -19,6 +31,7 @@ const buildBoards = () => {
       utils.printToDom('#boards', domString);
 
       $('body').on('click', '.boardCard', pinList.showPins);
+      $('#board-delete').on('click', removeBoardEvent);
     })
     .catch((err) => console.error('it broke', err));
 };
