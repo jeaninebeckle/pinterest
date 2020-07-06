@@ -28,7 +28,7 @@ const buildBoards = () => {
 
       domString += '</div>';
 
-      utils.printToDom('#boards', domString);
+      utils.printToDom('#showBoards', domString);
 
       $('body').on('click', '.boardCard', pinList.showPins);
       $('body').on('click', '#board-delete', removeBoardEvent);

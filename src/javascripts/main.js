@@ -13,6 +13,7 @@ const init = () => {
   authData.checkLoginStatus();
   auth.loginButton();
   navbar.logoutEvent();
+  navbar.resetPage();
 };
 
 init();

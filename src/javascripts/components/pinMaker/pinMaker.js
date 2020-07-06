@@ -6,7 +6,7 @@ const pinMaker = (pin) => {
     <img class="card-img-top" src="${pin.imgUrl}" alt="Card image cap">
     <div class="card-body">
     <a class="card-text" href=${pin.webUrl}>Follow the Link!</a>
-    <div><i type="button" class="far fa-times-circle"></i></div>
+    <div class="dlt"><i type="button" class="far fa-times-circle"></i> Delete Pin</div>
   </div>
 </div>
   `;
