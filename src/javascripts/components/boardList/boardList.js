@@ -4,8 +4,8 @@ import utils from '../../helpers/utils';
 import pinList from '../pinList/pinList';
 
 const removeBoardEvent = (e) => {
-  console.warn(e.target.closest('.card').id);
-  const boardId = e.target.closest('.card').id;
+  console.warn(e.target.closest('.boardCard').id);
+  const boardId = e.target.closest('.boardCard').id;
   boardData.deleteBoard(boardId)
     .then((response) => {
       console.warn(response);
@@ -31,7 +31,7 @@ const buildBoards = () => {
       utils.printToDom('#boards', domString);
 
       $('body').on('click', '.boardCard', pinList.showPins);
-      $('#board-delete').on('click', removeBoardEvent);
+      $('body').on('click', '#board-delete', removeBoardEvent);
     })
     .catch((err) => console.error('it broke', err));
 };

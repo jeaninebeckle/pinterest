@@ -8,9 +8,30 @@ const removePinEvent = (e) => {
     .then((response) => {
       console.warn(response);
 
-      showPins(); //eslint-disable-line
+      rebuildSingleBoard(); //eslint-disable-line
     })
     .catch((err) => console.error('could not delete pin', err));
+};
+
+const rebuildSingleBoard = (e) => {
+  const boardId = e.target.id;
+  pinData.getPinsByBoardId()
+    .then((response) => {
+      const myPins = response.data;
+      let domString = `
+      <div class="card">
+      `;
+
+      myPins.forEach((pin) => {
+        if (pin.boardId === boardId) {
+          domString += pinMaker.pinMaker(pin);
+        }
+      });
+
+      domString += '</div>';
+      utils.printToDom('#pins', domString);
+    })
+    .catch((err) => console.error('could not reprint single board', err));
 };
 
 const showPins = (e) => {
