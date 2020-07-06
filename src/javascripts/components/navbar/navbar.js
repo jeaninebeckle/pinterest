@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import buildBoards from '../boardList/boardList';
+import buildBoards from '../boardList/boardList'; //eslint-disable-line
 
 const logoutEvent = () => {
   $('#navbar-logout-button').click((e) => {
@@ -12,7 +12,6 @@ const logoutEvent = () => {
 const resetPage = () => {
   $('#nav-home').click((e) => {
     e.preventDefault();
-    console.warn('you clicked home');
     $('#boards').removeClass('hide');
     buildBoards.buildBoards();
     $('#pins').addClass('hide');
