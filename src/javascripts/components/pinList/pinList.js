@@ -34,7 +34,13 @@ const rebuildSingleBoard = (e) => {
     .catch((err) => console.error('could not reprint single board', err));
 };
 
+const changeClass = () => {
+  $('#boards').addClass('hide');
+  $('#pins').removeClass('hide');
+};
+
 const showPins = (e) => {
+  changeClass();
   const boardId = e.target.closest('.card').id;
   pinData.getPinsByBoardId(boardId)
     .then((pins) => {
