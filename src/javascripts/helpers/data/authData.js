@@ -6,6 +6,7 @@ import boardList from '../../components/boardList/boardList';
 const authDiv = $('#auth');
 const logoutButton = $('#navbar-logout-button');
 const homeDiv = $('#homePage');
+const allBoards = $('#nav-home');
 const boardsDiv = $('#boards');
 
 const checkLoginStatus = () => {
@@ -14,6 +15,7 @@ const checkLoginStatus = () => {
       authDiv.addClass('hide');
       homeDiv.addClass('hide');
       logoutButton.removeClass('hide');
+      allBoards.removeClass('hide');
       boardsDiv.removeClass('hide');
 
       boardList.buildBoards();
@@ -22,6 +24,7 @@ const checkLoginStatus = () => {
       logoutButton.addClass('hide');
       boardsDiv.addClass('hide');
       homeDiv.removeClass('hide');
+      allBoards.addClass('hide');
     }
   });
 };
