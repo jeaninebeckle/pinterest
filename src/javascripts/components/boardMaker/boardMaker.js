@@ -8,9 +8,9 @@ const boardMaker = (board) => {
         <div class="card-body">
           <h5 class="text-center">See Pins</h5>
           <div class="text-center dlt"><i type="button" id="board-delete" class="far fa-times-circle"></i> Delete Board</div>
-          </div>
         </div>
-      </div>
+        </div>
+        </div>
   `;
 
   return domString;
