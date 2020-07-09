@@ -8,6 +8,7 @@ const logoutButton = $('#navbar-logout-button');
 const homeDiv = $('#homePage');
 const allBoards = $('#nav-home');
 const boardsDiv = $('#boards');
+const newBoardDiv = $('#new-board');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -17,14 +18,17 @@ const checkLoginStatus = () => {
       logoutButton.removeClass('hide');
       allBoards.removeClass('hide');
       boardsDiv.removeClass('hide');
+      newBoardDiv.removeClass('hide');
 
       boardList.buildBoards();
+      boardList.boardEvents();
     } else {
       authDiv.removeClass('hide');
       logoutButton.addClass('hide');
       boardsDiv.addClass('hide');
       homeDiv.removeClass('hide');
       allBoards.addClass('hide');
+      newBoardDiv.addClass('hide');
     }
   });
 };
