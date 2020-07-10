@@ -1,6 +1,7 @@
 import pinData from '../../helpers/data/pinData';
 import pinMaker from '../pinMaker/pinMaker';
 import utils from '../../helpers/utils';
+import createPin from '../newPin/newPin';
 
 const removePinEvent = (e) => {
   const pinId = e.target.closest('.dlt').id;
@@ -10,6 +11,25 @@ const removePinEvent = (e) => {
       console.warn(response);
     })
     .catch((err) => console.error('could not delete pin', err));
+};
+
+const addPinEvent = (e) => {
+  e.preventDefault();
+
+  const newPin = {
+    boardId: document.getElementById('boardTest').dataset.boardId,
+    webUrl: $('#web-url').val(),
+    imgUrl: $('#img-url').val(),
+  };
+  console.warn(newPin);
+
+  pinData.addPin(newPin)
+    .then(() => {
+      const boardId = e.target.closest('.card').id;
+      showPins(boardId); // eslint-disable-line
+      utils.printToDom('#new-pin', '');
+    })
+    .catch((err) => console.error('could not add pin', err));
 };
 
 const changeClass = () => {
@@ -24,7 +44,8 @@ const showPins = (e) => {
   pinData.getPinsByBoardId(boardId)
     .then((pins) => {
       let domString = `
-      <div class="card ${boardId}">
+      <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
+      <div id="boardTest" class="card" data-board-id=${boardId}>
       `;
 
       pins.forEach((pin) => {
@@ -39,4 +60,9 @@ const showPins = (e) => {
     .catch((err) => console.error('get pins not working', err));
 };
 
-export default { showPins };
+const pinEvents = () => {
+  $('body').on('click', '#pin-creator', addPinEvent);
+  $('body').on('click', '#show-add-pin', createPin.showPinForm);
+};
+
+export default { showPins, pinEvents };
