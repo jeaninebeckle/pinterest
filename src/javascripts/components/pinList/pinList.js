@@ -21,15 +21,34 @@ const addPinEvent = (e) => {
     webUrl: $('#web-url').val(),
     imgUrl: $('#img-url').val(),
   };
-  console.warn(newPin);
 
   pinData.addPin(newPin)
     .then(() => {
-      const boardId = e.target.closest('.card').id;
-      showPins(boardId); // eslint-disable-line
       utils.printToDom('#new-pin', '');
     })
     .catch((err) => console.error('could not add pin', err));
+
+  // eslint-disable-next-line prefer-destructuring
+  const boardId = document.getElementById('boardTest').dataset.boardId;
+  console.warn(boardId);
+
+  pinData.getPinsByBoardId(boardId)
+    .then((pins) => {
+      let domString = `
+        <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
+        <div id="boardTest" class="card" data-board-id=${boardId}>
+        `;
+      pins.forEach((pin) => {
+        domString += pinMaker.pinMaker(pin);
+      });
+      console.warn(pins);
+
+      domString += '</div>';
+
+      utils.printToDom('#pins', domString);
+      $('body').on('click', '.delete-pin', removePinEvent);
+    })
+    .catch((err) => console.error('get pins not working', err));
 };
 
 const changeClass = () => {
