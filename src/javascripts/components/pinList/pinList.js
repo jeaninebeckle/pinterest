@@ -8,28 +8,9 @@ const removePinEvent = (e) => {
   pinData.deletePin(pinId)
     .then((response) => {
       console.warn(response);
-      // reprintBoards(pinId); // eslint-disable-line
     })
     .catch((err) => console.error('could not delete pin', err));
 };
-
-// const reprintBoards = (boardId) => {
-//   pinData.getPinsByBoardId(boardId)
-//     .then((pins) => {
-//       let domString = `
-//     <div class="card ${boardId}">
-//     `;
-
-//       pins.forEach((pin) => {
-//         domString += pinMaker.pinMaker(pin);
-//       });
-
-//       domString += '</div>';
-
-//       utils.printToDom('#pins', domString);
-//     })
-//     .catch((err) => console.error('could not reprint pins', err));
-// };
 
 const changeClass = () => {
   $('#boards').addClass('hide');
