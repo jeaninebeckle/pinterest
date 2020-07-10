@@ -22,7 +22,7 @@ const addBoardEvent = (e) => {
   e.preventDefault();
 
   const newBoard = {
-    category: $('board-category').val(),
+    category: $('#board-category').val(),
   };
 
   boardData.addBoard(newBoard)
