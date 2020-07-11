@@ -25,30 +25,29 @@ const addPinEvent = (e) => {
   pinData.addPin(newPin)
     .then(() => {
       utils.printToDom('#new-pin', '');
+      // eslint-disable-next-line prefer-destructuring
+      const boardId = document.getElementById('boardTest').dataset.boardId;
+
+      console.warn(boardId);
+      pinData.getPinsByBoardId(boardId)
+        .then((pins) => {
+          let domString = `
+            <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
+            <div id="boardTest" class="card" data-board-id=${boardId}>
+            `;
+          pins.forEach((pin) => {
+            domString += pinMaker.pinMaker(pin);
+          });
+          console.warn(pins);
+
+          domString += '</div>';
+
+          utils.printToDom('#pins', domString);
+          $('body').on('click', '.delete-pin', removePinEvent);
+        })
+        .catch((err) => console.error('get pins not working', err));
     })
     .catch((err) => console.error('could not add pin', err));
-
-  // eslint-disable-next-line prefer-destructuring
-  const boardId = document.getElementById('boardTest').dataset.boardId;
-  console.warn(boardId);
-
-  pinData.getPinsByBoardId(boardId)
-    .then((pins) => {
-      let domString = `
-        <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
-        <div id="boardTest" class="card" data-board-id=${boardId}>
-        `;
-      pins.forEach((pin) => {
-        domString += pinMaker.pinMaker(pin);
-      });
-      console.warn(pins);
-
-      domString += '</div>';
-
-      utils.printToDom('#pins', domString);
-      $('body').on('click', '.delete-pin', removePinEvent);
-    })
-    .catch((err) => console.error('get pins not working', err));
 };
 
 const changeClass = () => {
