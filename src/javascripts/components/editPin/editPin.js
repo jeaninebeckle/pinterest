@@ -7,7 +7,7 @@ const showEditForm = (pinId) => {
     .then((boards) => {
       let domString = `
       <h3>Edit Pin</h3>
-      <form class="edit-pin">
+      <form class="edit-pin" id=${pinId}>
       <h6>Change Board</h6>
       <select id="chooseBoard" class="select">`;
 

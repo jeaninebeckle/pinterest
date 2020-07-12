@@ -31,5 +31,4 @@ export default {
   addPin,
   getPinbyId,
   updatePin,
-  // getPins,
 };
