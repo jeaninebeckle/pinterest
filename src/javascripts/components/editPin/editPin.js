@@ -1,20 +1,28 @@
 import pinData from '../../helpers/data/pinData';
-// import boardData from '../../helpers/data/boardData';
 import utils from '../../helpers/utils';
+import boardData from '../../helpers/data/boardData';
 
 const showEditForm = (pinId) => {
-  pinData.getPinbyId(pinId)
-    .then((response) => {
-      const pin = response.data;
-      console.warn(utils.idToCategory); // this is not working
-      const domString = `
+  boardData.getBoards()
+    .then((boards) => {
+      let domString = `
       <h3>Edit Pin</h3>
-      <form class="edit-pin" id=${pinId}>
-  
-    <div class="form-group">
-    <label for="edit-pin-pic">Board</label>
-    <input type="text" class="form-control" id="edit-pin-board" value=${utils.idToCategory}>
-  </div>
+      <form class="edit-pin">
+      <h4>Change Board</h4>
+      <select id="chooseBoard" class="select">`;
+
+      boards.forEach((board) => {
+        domString += `
+            <option value=${board.category} data-board="${board.id}" id="edit-pin-board">${board.category}</option>
+            </select>
+              `;
+      })
+        .catch((err) => console.error('could not change boards', err));
+
+      pinData.getPinbyId(pinId)
+        .then((response) => {
+          const pin = response.data;
+          domString += `   
         <div class="form-group">
             <label for="edit-pin-pic">Image URL:</label>
             <input type="text" class="form-control" id="edit-pin-pic" value=${pin.imgUrl}>
@@ -28,9 +36,10 @@ const showEditForm = (pinId) => {
           <button type="submit" class="btn btn-secondary" id="cancel-edit">Cancel</button>
         </form>
       `;
-      utils.printToDom('#edit-pin', domString);
-    })
-    .catch((err) => console.error('get single pin to edit failed', err));
+          utils.printToDom('#edit-pin', domString);
+        })
+        .catch((err) => console.error('get single pin to edit failed', err));
+    });
 };
 
 export default { showEditForm };
