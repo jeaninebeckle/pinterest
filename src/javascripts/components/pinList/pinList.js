@@ -23,7 +23,8 @@ const editPinEvent = (e) => {
   const pinId = e.target.closest('.edit-pin').id;
 
   const editedPin = {
-    boardId: $('#edit-pin-board').val(),
+    boardId: $('#chooseBoard').find(':selected').data('board-id'),
+    title: $('#edit-pin-title').val(),
     imgUrl: $('#edit-pin-pic').val(),
     webUrl: $('#edit-pin-link').val(),
   };
@@ -61,6 +62,7 @@ const addPinEvent = (e) => {
 
   const newPin = {
     boardId: document.getElementById('boardTest').dataset.boardId,
+    title: $('#title').val(),
     webUrl: $('#web-url').val(),
     imgUrl: $('#img-url').val(),
   };

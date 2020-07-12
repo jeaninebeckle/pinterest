@@ -8,12 +8,12 @@ const showEditForm = (pinId) => {
       let domString = `
       <h3>Edit Pin</h3>
       <form class="edit-pin">
-      <h4>Change Board</h4>
+      <h6>Change Board</h6>
       <select id="chooseBoard" class="select">`;
 
       boards.forEach((board) => {
         domString += `
-            <option value=${board.category} data-board="${board.id}" id="edit-pin-board">${board.category}</option>`;
+            <option value=${board.id} data-board-id=${board.id} id="edit-pin-board">${board.category}</option>`;
       });
       domString += `
       </select>
@@ -22,6 +22,10 @@ const showEditForm = (pinId) => {
         .then((response) => {
           const pin = response.data;
           domString += `   
+          <div class="form-group">
+            <label for="edit-pin-title">Title</label>
+            <input type="text" class="form-control" id="edit-pin-title" value=${pin.title}>
+          </div>
         <div class="form-group">
             <label for="edit-pin-pic">Image URL:</label>
             <input type="text" class="form-control" id="edit-pin-pic" value=${pin.imgUrl}>
