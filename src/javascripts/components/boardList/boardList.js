@@ -23,7 +23,7 @@ const addBoardEvent = (e) => {
   const newBoard = {
     category: $('#board-category').val(),
   };
-
+  console.warn(newBoard);
   boardData.addBoard(newBoard)
     .then(() => {
       buildBoards(); // eslint-disable-line

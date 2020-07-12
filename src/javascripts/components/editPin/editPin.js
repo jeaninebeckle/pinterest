@@ -13,7 +13,7 @@ const showEditForm = (pinId) => {
 
       boards.forEach((board) => {
         domString += `
-            <option value=${board.id} data-board-id=${board.id} id="edit-pin-board">${board.category}</option>`;
+            <option value=${board.category} data-board-id=${board.id} id="edit-pin-board">${board.category}</option>`;
       });
       domString += `
       </select>
