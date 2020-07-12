@@ -13,12 +13,11 @@ const showEditForm = (pinId) => {
 
       boards.forEach((board) => {
         domString += `
-            <option value=${board.category} data-board="${board.id}" id="edit-pin-board">${board.category}</option>
-            </select>
-              `;
-      })
-        .catch((err) => console.error('could not change boards', err));
-
+            <option value=${board.category} data-board="${board.id}" id="edit-pin-board">${board.category}</option>`;
+      });
+      domString += `
+      </select>
+      `;
       pinData.getPinbyId(pinId)
         .then((response) => {
           const pin = response.data;
