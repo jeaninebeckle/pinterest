@@ -6,7 +6,7 @@ import createPin from '../newPin/newPin';
 
 const removePinEvent = (e) => {
   const pinId = e.target.closest('.dlt').id;
-  $(e.target.closest('.card')).hide();
+  // $(e.target.closest('.card')).hide();
   pinData.deletePin(pinId)
     .then((response) => {
       console.warn(response);
@@ -23,9 +23,9 @@ const editPinEvent = (e) => {
   const pinId = e.target.closest('.edit-pin').id;
 
   const editedPin = {
-    board: 'get this working later',
-    imgUrl: $('edit-pin-pic').val(),
-    webUrl: $('edit-pin-link').val(),
+    boardId: $('#edit-pin-board').val(),
+    imgUrl: $('#edit-pin-pic').val(),
+    webUrl: $('#edit-pin-link').val(),
   };
 
   pinData.updatePin(pinId, editedPin)
@@ -49,7 +49,7 @@ const editPinEvent = (e) => {
           domString += '</div>';
 
           utils.printToDom('#pins', domString);
-          // $('body').on('click', '.delete-pin', removePinEvent);
+          $('body').on('click', '.delete-pin', removePinEvent);
         })
         .catch((err) => console.error('get pins not working', err));
     })
