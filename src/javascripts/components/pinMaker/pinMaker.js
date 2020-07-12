@@ -8,6 +8,7 @@ const pinMaker = (pin) => {
         <div class="card-body">
           <a class="card-text" href=${pin.webUrl}>Follow the Link!</a>
         <div id="${pin.id}" class="dlt"><i type="button" class="far fa-times-circle"></i> Delete Pin</div>
+        <div class="edit"><i type="button" class="fas fa-edit"></i> Edit Pin</div>
       </div>
     </div>
   </div>

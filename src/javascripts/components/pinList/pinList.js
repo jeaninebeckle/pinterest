@@ -1,5 +1,6 @@
 import pinData from '../../helpers/data/pinData';
 import pinMaker from '../pinMaker/pinMaker';
+import editPin from '../editPin/editPin';
 import utils from '../../helpers/utils';
 import createPin from '../newPin/newPin';
 
@@ -11,6 +12,48 @@ const removePinEvent = (e) => {
       console.warn(response);
     })
     .catch((err) => console.error('could not delete pin', err));
+};
+
+const showEditForm = (e) => {
+  editPin.showEditForm(e.target.closest('.card').id);
+};
+
+const editPinEvent = (e) => {
+  e.preventDefault();
+  const pinId = e.target.closest('.edit-pin').id;
+
+  const editedPin = {
+    board: 'get this working later',
+    imgUrl: $('edit-pin-pic').val(),
+    webUrl: $('edit-pin-link').val(),
+  };
+
+  pinData.updatePin(pinId, editedPin)
+    .then(() => {
+      utils.printToDom('#edit-pin', '');
+      // eslint-disable-next-line prefer-destructuring
+      const boardId = document.getElementById('boardTest').dataset.boardId;
+
+      console.warn(boardId);
+      pinData.getPinsByBoardId(boardId)
+        .then((pins) => {
+          let domString = `
+            <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
+            <div id="boardTest" class="card" data-board-id=${boardId}>
+            `;
+          pins.forEach((pin) => {
+            domString += pinMaker.pinMaker(pin);
+          });
+          console.warn(pins);
+
+          domString += '</div>';
+
+          utils.printToDom('#pins', domString);
+          // $('body').on('click', '.delete-pin', removePinEvent);
+        })
+        .catch((err) => console.error('get pins not working', err));
+    })
+    .catch((err) => console.error('could not edit pin', err));
 };
 
 const addPinEvent = (e) => {
@@ -81,6 +124,8 @@ const showPins = (e) => {
 const pinEvents = () => {
   $('body').on('click', '#pin-creator', addPinEvent);
   $('body').on('click', '#show-add-pin', createPin.showPinForm);
+  $('body').on('click', '.edit', showEditForm);
+  $('body').on('click', '#pin-editor', editPinEvent);
 };
 
 export default { showPins, pinEvents };

@@ -20,7 +20,6 @@ const removeBoardEvent = (e) => {
 
 const addBoardEvent = (e) => {
   e.preventDefault();
-
   const newBoard = {
     category: $('#board-category').val(),
   };

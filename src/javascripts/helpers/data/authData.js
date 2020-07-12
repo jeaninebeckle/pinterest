@@ -11,6 +11,7 @@ const allBoards = $('#nav-home');
 const boardsDiv = $('#boards');
 const newBoardDiv = $('#new-board');
 const newPinDiv = $('#new-pin');
+const editPinDiv = $('#edit-pin');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -22,6 +23,7 @@ const checkLoginStatus = () => {
       boardsDiv.removeClass('hide');
       newBoardDiv.removeClass('hide');
       newPinDiv.removeClass('hide');
+      editPinDiv.removeClass('hide');
 
       boardList.buildBoards();
       boardList.boardEvents();
@@ -34,6 +36,7 @@ const checkLoginStatus = () => {
       allBoards.addClass('hide');
       newBoardDiv.addClass('hide');
       newPinDiv.addClass('hide');
+      editPinDiv.addClass('hide');
     }
   });
 };
