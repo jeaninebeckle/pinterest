@@ -19,6 +19,22 @@ const getBoards = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getBoardCategories = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/boards.json`)
+    .then((response) => {
+      const boardNames = response.data;
+      const categories = [];
+      if (boardNames) {
+        Object.keys(boardNames).forEach((boardCat) => {
+          boardNames[boardCat].category = boardCat;
+          categories.push(boardNames[boardCat]);
+        });
+      }
+      resolve(categories);
+    })
+    .catch((err) => reject(err));
+});
+
 const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId}.json`);
 
-export default { getBoards, deleteBoard };
+export default { getBoards, deleteBoard, getBoardCategories };

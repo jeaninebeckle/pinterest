@@ -6,7 +6,7 @@ import createPin from '../newPin/newPin';
 
 const removePinEvent = (e) => {
   const pinId = e.target.closest('.dlt').id;
-  // $(e.target.closest('.card')).hide();
+  $(e.target.closest('.card')).hide();
   pinData.deletePin(pinId)
     .then((response) => {
       console.warn(response);
