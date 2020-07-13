@@ -13,18 +13,19 @@ const showEditForm = (pinId) => {
 
       boards.forEach((board) => {
         domString += `
-            <option value=${board.category} data-board-id=${board.id} id="edit-pin-board">${board.category}</option>`;
+          <option data-board-id=${board.id} id="edit-pin-board" value="${board.category}" selected>${board.category}</option>`;
       });
+
       domString += `
       </select>
       `;
       pinData.getPinbyId(pinId)
         .then((response) => {
           const pin = response.data;
-          domString += `   
+          domString += `
           <div class="form-group">
             <label for="edit-pin-title">Title</label>
-            <input type="text" class="form-control" id="edit-pin-title" value=${pin.title}>
+            <input type="text" class="form-control" id="edit-pin-title" value="${pin.title}">
           </div>
         <div class="form-group">
             <label for="edit-pin-pic">Image URL:</label>
