@@ -20,11 +20,10 @@ const removeBoardEvent = (e) => {
 
 const addBoardEvent = (e) => {
   e.preventDefault();
-
   const newBoard = {
     category: $('#board-category').val(),
   };
-
+  console.warn(newBoard);
   boardData.addBoard(newBoard)
     .then(() => {
       buildBoards(); // eslint-disable-line

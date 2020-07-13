@@ -8,6 +8,7 @@ const showForm = () => {
     <input type="text" class="form-control" id="board-category" placeholder="DIY Projects">
   </div>
   <button type="submit" class="btn btn-outline-secondary" id="board-creator">Create!</button>
+  <button type="submit" class="btn btn-outline-secondary" id="board-creator">Cancel</button>
   </form>
   `;
   utils.printToDom('#new-board', domString);

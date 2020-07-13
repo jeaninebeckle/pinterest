@@ -4,6 +4,10 @@ const showPinForm = () => {
   const domString = `
   <form>
   <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title">
+  </div>
+  <div class="form-group">
     <label for="img-url">Image URL</label>
     <input type="text" class="form-control" id="img-url">
   </div>
