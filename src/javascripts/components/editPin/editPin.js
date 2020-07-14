@@ -12,8 +12,15 @@ const showEditForm = (pinId) => {
       <select id="chooseBoard" class="select">`;
 
       boards.forEach((board) => {
-        domString += `
+        const boardId = $('#chooseBoard').data('board');
+        console.warn(board.id, boardId);
+        if (board.id === boardId) {
+          domString += `
           <option data-board-id=${board.id} id="edit-pin-board" value="${board.category}" selected>${board.category}</option>`;
+        } else {
+          domString += `
+          <option data-board-id=${board.id} id="edit-pin-board" value="${board.category}">${board.category}</option>`;
+        }
       });
 
       domString += `

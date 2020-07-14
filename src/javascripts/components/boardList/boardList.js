@@ -36,7 +36,7 @@ const buildBoards = () => {
   boardData.getBoards()
     .then((boards) => {
       let domString = `
-      <button class="btn btn-outline-secondary" id="show-add-board">Add New Board</button>
+      <div class="text-center"><button class="btn btn-outline-secondary" id="show-add-board">Add New Board</button></div>
       <div class="row">
       `;
 

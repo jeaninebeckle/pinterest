@@ -3,6 +3,16 @@
 
 .hide {
   display: none;
+  .card {
+    border: none !important;
+  }
+}
+
+form {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
 }
 
 h1 {
@@ -37,4 +47,8 @@ h1 {
   .col-sm {
     display: flex;
   }
+}
+
+#show-add-pin {
+  margin: 30px;
 }

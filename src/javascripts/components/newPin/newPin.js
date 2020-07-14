@@ -2,17 +2,17 @@ import utils from '../../helpers/utils';
 
 const showPinForm = () => {
   const domString = `
-  <form>
+  <form class="text-center">
   <div class="form-group">
-    <label for="title">Title</label>
+    <label for="title">Title:</label>
     <input type="text" class="form-control" id="title">
   </div>
   <div class="form-group">
-    <label for="img-url">Image URL</label>
+    <label for="img-url">Image URL:</label>
     <input type="text" class="form-control" id="img-url">
   </div>
   <div class="form-group">
-    <label for="web-url">Web URL</label>
+    <label for="web-url">Web URL:</label>
     <input type="text" class="form-control" id="web-url">
   </div>
   <button type="submit" class="btn btn-outline-secondary" id="pin-creator">Create!</button>

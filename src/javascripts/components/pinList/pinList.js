@@ -39,7 +39,7 @@ const editPinEvent = (e) => {
       pinData.getPinsByBoardId(boardId)
         .then((pins) => {
           let domString = `
-            <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
+            <div class="text-center"><button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button></div>
             <div id="boardTest" class="row" data-board-id=${boardId}>
             `;
           pins.forEach((pin) => {
@@ -77,7 +77,7 @@ const addPinEvent = (e) => {
       pinData.getPinsByBoardId(boardId)
         .then((pins) => {
           let domString = `
-            <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
+          <div class="text-center"><button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button></div>
             <div id="boardTest" class="row" data-board-id=${boardId}>
             `;
           pins.forEach((pin) => {
@@ -107,7 +107,7 @@ const showPins = (e) => {
   pinData.getPinsByBoardId(boardId)
     .then((pins) => {
       let domString = `
-      <button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button>
+      <div class="text-center"><button class="btn btn-outline-secondary" id="show-add-pin">Add New Pin</button></div>
       <div id="boardTest" class="row" data-board-id=${boardId}>
       `;
 
