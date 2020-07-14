@@ -3,6 +3,16 @@
 
 .hide {
   display: none;
+  .card {
+    border: none !important;
+  }
+}
+
+form {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
 }
 
 h1 {
@@ -11,4 +21,34 @@ h1 {
 
 .fab {
   color: red;
+}
+
+#modify {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  .dlt, .edit {
+    margin: 5px;
+  }
+}
+
+.boardCard {
+  margin: 20px;
+  height: 200px;
+}
+
+#pins {
+  margin: 20px;
+  .card {
+    width: 300px;
+    height: 650px;
+  }
+  .col-sm {
+    display: flex;
+  }
+}
+
+#show-add-pin {
+  margin: 30px;
 }

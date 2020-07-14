@@ -36,15 +36,16 @@ const buildBoards = () => {
   boardData.getBoards()
     .then((boards) => {
       let domString = `
-      <button class="btn btn-outline-secondary" id="show-add-board">Add New Board</button>
-      <div class="card">
+      <div class="text-center"><button class="btn btn-outline-secondary" id="show-add-board">Add New Board</button></div>
+      <div class="row">
       `;
 
       boards.forEach((board) => {
         domString += boardMaker.boardMaker(board);
       });
 
-      domString += '</div>';
+      domString += `</div>
+      `;
 
       utils.printToDom('#showBoards', domString);
     })
